@@ -29,7 +29,7 @@ Principal component analysis was conducted on the Cartesian coordinates of each 
 
 The maximal distal curvature (MDC) was found as defined in the paper. The data provided included the tangent angle of every material point at any given time. Operating on the last decile of these, we found the MDC as the maximum of the absolute value of the curvature, which was defined as the derivative of the tangent angles with respect to the material points. We note that the default [gradient](https://uk.mathworks.com/help/matlab/ref/gradient.html) function in MATLAB assumes a distance of 1 between each point; since we do not know the actual distance between each point, we have adopted the same convention. Changing the distance would merely introduce an extra factor to each value of curvature calculated, so we assume that it has no bearing on the prediction results. This is implemented in [makeMDC.m](makeMDC.m).
 
-Using a chi-squared feature ranking algorithm, we see that beat period is by far the most important predictor used in classification, followed by flagellum length. 
+Using a chi-squared feature ranking algorithm, we see that beat period is by far the most important predictor used in classification, followed by flagellum length and $\beta$. We note that for the two cases fresh/frozen vs fresh/frozen/blebbed they have remarkably similar importance, which can be attributed to the relative small number of blebbed sperm in our data. The relatively small significance attached to $\alpha$ and $\beta$ suggest maybe a different approach could be used to analysise the Cartesian beat pattern. Other predictors that could be interesting to look at for the future are energy of the waveform, functional PCA on the beat form data, size of the head and maximum amplitude achieved in one beat period.
 
 | fresh/frozen                                                    | fresh/frozen/blebbed                                                  |
 |:---------------------------------------------------------------:| :--------------------------------------------------------------------:|
@@ -37,12 +37,16 @@ Using a chi-squared feature ranking algorithm, we see that beat period is by far
 
 ---
 ## Model
+To get the data required for the models:
+- Requires the "pop_pca.m" and "all_data.mat" files to be in the same directory, which can be found in [the data files here](https://ora.ox.ac.uk/objects/uuid:45ec598b-a674-4738-bd00-e1b761f49411)  
+- Run initialise to get spermTable and spermTable_blebbed to get the data for use in classication algorithm.  
+The [makeTable.m](makeTable.m) file in particular can be changed such that the response is either fresh/frozen or fresh/frozen/blebbed.
 
-Requires the "pop_pca.m" and "all_data.mat" files to be in the same directory, which can be found in [the data files here](https://ora.ox.ac.uk/objects/uuid:45ec598b-a674-4738-bd00-e1b761f49411)  
-Run initialise to get spermTable and spermTable_blebbed to get the data for use in classication algorithm.  
-The [makeTable.m](makeTable.m) file in particular can be changed such that the response is either fresh/frozen or fresh/frozen/blebbed.  
+The models are stored in TODO
 
 All models were trained using the MATLAB [Classification Learner App](https://uk.mathworks.com/help/stats/classificationlearner-app.html).
+
+We first trained a simpler model using only the first three most important predictors, beat period, flagellum length and $\beta$. 
 
 We attempted an ensemble approach using decision trees. First we compared the Out-of-bag error rates of a random forest model as we increased the number of trees, looking at the performance of the model which tries to classify fresh/frozen and the model which tries fresh/frozen/blebbed. We take $n=50$ to be the number of trees by which the ensemble classifier has converged.
 
@@ -58,6 +62,12 @@ From the initial exploratory process, we found that most algorithms had trouble 
 | RUSBoosted  | ![RUSBoosted_fresh_frozen](./figs/RUSBoostedTree.png)      | ![RUSBoosted_blebbed_fresh_frozen](./figs/RUSBoostedTree_blebbed.png) |
 
 We can see that in the fresh/frozen case the bagged tree and the RUSBoosted tree performed similarly, while in the fresh/frozen/blebbed case the two performed differently, with the RUSBoosted tree having higher accuracy in determining whether a sample was blebbed or not. Further research could include changing the misclassification cost associated with misclassifying the blebbed samples, and compare the balanced accuracy of the model normalised with respect to the size of each class.
+
+<p float="left">
+  <img src="/figs/ComparisonOfAccuracyOfRUSBoostedAndBaggedTreesForFreshFrozen.png" width="200" />
+  <img src="/figs/ComparisonOfAccuracyOfRUSBoostedAndBaggedTreesForFreshFrozenBlebbed.png" width="200" /> 
+</p>
+
 
  
 
