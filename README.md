@@ -33,7 +33,7 @@ The maximal distal curvature (MDC) was found as defined in the paper. The data p
 ## Model
 
 Requires the "pop_pca.m" and "all_data.mat" files to be in the same directory, which can be found in [the data files here](https://ora.ox.ac.uk/objects/uuid:45ec598b-a674-4738-bd00-e1b761f49411)  
-Run linearAlphaBeta.m, makeMDC.m, makeTable.m and makeSpermTable.m in that order to get the spermTable.  
+Run initialise to get spermTable and spermTable_blebbed to get the data for use in classication algorithm.  
 The [makeTable.m](makeTable.m) file in particular can be changed such that the response is either fresh/frozen or fresh/frozen/blebbed.  
 
 All models were trained using the MATLAB [Classification Learner App](https://uk.mathworks.com/help/stats/classificationlearner-app.html).
@@ -44,13 +44,14 @@ We attempted an ensemble approach using decision trees. First we compared the Ou
 <img  src=https://github.com/chen-Harry/Hackathon_2024/blob/main/figs/bagTreeOOBErrorGraph.png?raw=true alt="Out-of-bag error" class = "center" width="600" height = "450"/>
  </p>
 
-From the initial exploratory process, we found that most algorithms had trouble classifying blebbed against frozen. This can be attributed to the fact that both frozen and blebbed came from the same sample (sample B in the paper), and as a result may have very simular features. Another reason could be due to the smaller number of samples in the blebbed class vs fresh/frozen class (79 fresh, 103 frozen, 34 blebbed). Therefore, in order to try to improve the performance of the model for distinguishing between blebbed and frozen, we looked at the performance of RUSBoosted trees. Comparing the approaches produced by regular bagged trees and RUSBoosted trees, we can see that the RUSBoosted tree achieves a higher blebbed classification accuracy at the expense of the bagged approach.
+From the initial exploratory process, we found that most algorithms had trouble classifying blebbed against frozen. This can be attributed to the fact that both frozen and blebbed came from the same sample (sample B in the paper), and as a result may have very simular features. Another reason could be due to the smaller number of samples in the blebbed class vs fresh/frozen class (79 fresh, 103 frozen, 34 blebbed). Therefore, in order to try to improve the performance of the model for distinguishing between blebbed and frozen, we looked at the performance of RUSBoosted trees. Comparing the approaches produced by regular bagged trees and RUSBoosted trees, we can see that the RUSBoosted tree achieves a higher blebbed classification accuracy at the expense of the bagged approach. All the models ran used 5 fold cross validation and set aside 30% of the data for testing. 
 
 |             | fresh/frozen                                               | fresh/frozen/blebbed                                                  |
 | ----------- |:----------------------------------------------------------:| :--------------------------------------------------------------------:|
 | Bagged      | ![Bagged_fresh_frozen](./figs/BaggedTree.png)              | ![Bagged_blebbed_fresh_frozen](./figs/BaggedTree_blebbed.png)         |
 | RUSBoosted  | ![RUSBoosted_fresh_frozen](./figs/RUSBoostedTree.png)      | ![RUSBoosted_blebbed_fresh_frozen](./figs/RUSBoostedTree_blebbed.png) |
 
+We can see that in the fresh/frozen case the bagged tree and the RUSBoosted tree performed similarly, while in the fresh/frozen/blebbed case the two performe
 
  
 
