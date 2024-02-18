@@ -13,11 +13,18 @@
 
 ## Introduction
 
-We attempt to use the salient data points identified in the [paper](https://ora.ox.ac.uk/objects/uuid:45ec598b-a674-4738-bd00-e1b761f49411) to try and classify the bovine spermatozoa samples into fresh/frozen or fresh/frozen/blebbed based on the beat pattern analysis. We identified the key predictors outlined in the paper and reproduced the relevant classifiers, such as $\alpha$ and $\beta$ synthesised from the Cartesian beat pattern data and the maximal distal curvature derived from the tangent angle data. The classifiers were compared in their predictive power and were then used in classification. We mainly looked at an ensemble approach using random forest, and compared the performance of a bagged approach vs RUSBoost. 
+We attempt to use the salient data points identified in the [paper](https://ora.ox.ac.uk/objects/uuid:45ec598b-a674-4738-bd00-e1b761f49411) to try and classify the bovine spermatozoa samples into fresh/frozen or fresh/frozen/blebbed based on the beat pattern analysis. We identified the key predictors outlined in the paper and reproduced the relevant classifiers, such as $\alpha$ and $\beta$ synthesised from the Cartesian beat pattern data and the maximal distal curvature derived from the tangent angle data. The classifiers were compared in their predictive power and were then used in classification. We mainly looked at an ensemble approach using random forest, and compared the performance of a bagged approach vs RUSBoost. Overall we found that the predictors outlined in the paper were poor predictors for whether a sample was blebbed or not.
 
 ---
 
 ## Background
+
+Technology for CASA (computer-assisted sperm-analysis) and generating datasets for spermatozoa has improved. Previously only up to 70% of the flagella length was captured for analysis despite the distal part being proposed as important. The dataset used here was obtained using an automatic video microscopy from phase contrast imaging that captured approximately 90% of the flagellum length. It contains the beat-pattern data for waveforms of 216 bovine spermatozoa.
+
+Blebbing is a protrusion of the cell membrane and is a sign of cellular damage. Therefore, the condition of sperm can be determined by classifying the spermatozoa as blebbed or unblebbed. For example, in this dataset 25% of the spermatozoa that had been frozen were found to have distal cytoplasmic blebbing (a cytoplasmic bulge near the end of the flagellum away from the head of the sperm) implying that freezing the samples can damage spermatozoa.
+
+CASA methods for the classification of blebbed and unblebbed spermatozoa via their waveform data could have many implications for spermatology. For example, it could be used for quality assurance for livestock breeding or developing sperm technologies such as cryopreservation. 
+
 
 ---
 
@@ -46,16 +53,11 @@ The models are stored [here](/classfication_learner_sessions/)
 
 All models were trained using the MATLAB [Classification Learner App](https://uk.mathworks.com/help/stats/classificationlearner-app.html).
 
-We first trained a simpler model using only the first three most important predictors, beat period, flagellum length and $\beta$. We trained a coarse tree to try and get an idea of how the different predictors correlated with the classification.
-
-<p align="center">
-<img  src=/figs/ThreePredictorClassificationTree.png?raw=true alt="decision tree" class = "center" width="600" height = "400"/>
-<img src=/figs/CoarseTreeSmallerModel.png?raw=true, alt="confusion matrix" class = "center" width="600" height="400">
- </p>
+We first trained a simpler model using only the first three most important predictors, beat period, flagellum length and $\beta$. We trained a coarse tree to try and get an idea of how the different predictors correlated with the classification. The model indeed uses beat period as the most important classifier in both cases, and we see that it performs poorly when classifying blebbed samples, having a 0 true positive rate. 
 
 | Decision Tree | Confusion Matrix |
 |---|---|
- |![decision tree](/figs/ThreePredictorResponseClassificationTree.png)|![confusion matrix](/figs/CoarseTreeSmallerModel.png)|
+ |![decision tree](/figs/ThreePredictorClassificationTree.png)|![confusion matrix](/figs/CoarseTreeSmallerModel.png)|
 
 | Decision Tree | Confusion Matrix |
 |---|---|
@@ -82,14 +84,12 @@ We can see that in the fresh/frozen case the bagged tree and the RUSBoosted tree
 </p>
 
 
- 
-
 ---
 ## Discussion
 
-Depending on the usage for this classification, there are cases to be made on whether a bagged approach vs RUSBoosted approach is more appropriate. If we require the sample to have a low blebb count then an algorithm which has a higher true positive rate for blebbed could be preferable to one with a higher total accuracy. We also note that the top three predictors flagellum length, beat period and $\beta$ were poor predictors for blebbed, suggesting that $\alpha$ and MDC are important to determining whether a sample is blebbed or not.
+Depending on the usage for this classification, there are cases to be made on whether a bagged approach vs RUSBoosted approach is more appropriate. If we require the sample to have a low blebb count then an algorithm which has a higher true positive rate for blebbed could be preferable to one with a higher total accuracy. We also note that the top three predictors flagellum length, beat period and $\beta$ were poor predictors for blebbed, suggesting that $\alpha$ and MDC are important to determining whether a sample is blebbed or not. Another approach in order to reduce the misclassification for blebbed could be to introduce a prior based on what the blebbed percentage might be for a given sample.
 
-Given the time constraint we were not able to fully explore the data in its entirety, but this could be a good basis for further exploration of classification methods for spermatozoa beat patterns. In particular, we believe a more nuanced dimensionality reduction technique may be required to analyse the Cartesian beat pattern data over time, as $\alpha$ and $\beta$ appear to be poor predictors despite being derived from the whole Cartesian beat pattern dataset. 
+Given the time constraint we were not able to fully explore the data in its entirety, but this could be a good basis for further exploration of classification methods for spermatozoa beat patterns. In particular, we believe a more nuanced dimensionality reduction technique may be required to analyse the Cartesian beat pattern data over time, as $\alpha$ and $\beta$ appear to be poor predictors despite being derived from the whole Cartesian beat pattern dataset. Another point of interest would be whether if we were able to capture the last 10% of actual flagellum data whether the MDC make for a more accurate predictor.
 
 ---
 ## Team
