@@ -42,14 +42,15 @@ To get the data required for the models:
 - Run initialise to get spermTable and spermTable_blebbed to get the data for use in classication algorithm.  
 The [makeTable.m](makeTable.m) file in particular can be changed such that the response is either fresh/frozen or fresh/frozen/blebbed.
 
-The models are stored in TODO
+The models are stored [here](/classfication_learner_sessions/)
 
 All models were trained using the MATLAB [Classification Learner App](https://uk.mathworks.com/help/stats/classificationlearner-app.html).
 
 We first trained a simpler model using only the first three most important predictors, beat period, flagellum length and $\beta$. We trained a coarse tree to try and get an idea of how the different predictors correlated with the classification.
 
 <p align="center">
-<img  src=/figs/ThreePredictorClassificationTree.png?raw=true alt="decision tree" class = "center" width="700" height = "450"/>
+<img  src=/figs/ThreePredictorClassificationTree.png?raw=true alt="decision tree" class = "center" width="600" height = "400"/>
+<img src=/figs/CoarseTreeSmallerModel.png?raw=true, alt="confusion matrix" class = "center" width="600" height="400">
  </p>
 
 We then attempted an ensemble approach using decision trees looking at all the predictors. First we compared the Out-of-bag error rates of a random forest model as we increased the number of trees, looking at the performance of the model which tries to classify fresh/frozen and the model which tries fresh/frozen/blebbed. We take $n=50$ to be the number of trees by which the ensemble classifier has converged.
