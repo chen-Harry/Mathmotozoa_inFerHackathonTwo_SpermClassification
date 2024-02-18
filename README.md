@@ -53,6 +53,14 @@ We first trained a simpler model using only the first three most important predi
 <img src=/figs/CoarseTreeSmallerModel.png?raw=true, alt="confusion matrix" class = "center" width="600" height="400">
  </p>
 
+| Decision Tree | Confusion Matrix |
+|---|---|
+ |![decision tree](/figs/ThreePredictorResponseClassificationTree.png)|![confusion matrix](/figs/CoarseTreeSmallerModel.png)|
+
+| Decision Tree | Confusion Matrix |
+|---|---|
+ |![decision tree](/figs/ThreePredictorThreeResponseClassificationTree.png)|![confusion matrix](/figs/CoarseTreeSmallerModelAllThree.png)|
+
 We then attempted an ensemble approach using decision trees looking at all the predictors. First we compared the Out-of-bag error rates of a random forest model as we increased the number of trees, looking at the performance of the model which tries to classify fresh/frozen and the model which tries fresh/frozen/blebbed. We take $n=50$ to be the number of trees by which the ensemble classifier has converged.
 
 <p align="center">
