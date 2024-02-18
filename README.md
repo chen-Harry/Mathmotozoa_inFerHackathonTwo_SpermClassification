@@ -44,16 +44,16 @@ Using a chi-squared feature ranking algorithm, we see that beat period is by far
 
 ---
 ## Model
-To get the data required for the models:
-- Requires the "pop_pca.m" and "all_data.mat" files to be in the same directory, which can be found in [the data files here](https://ora.ox.ac.uk/objects/uuid:45ec598b-a674-4738-bd00-e1b761f49411)  
-- Run initialise to get spermTable and spermTable_blebbed to get the data for use in classication algorithm.  
+In order to make the table required to train the models:
+- add the files "pop_pca.m" and "all_data.mat" to the main directory, which can be found in [the data files here](https://ora.ox.ac.uk/objects/uuid:45ec598b-a674-4738-bd00-e1b761f49411)  
+- run initialise to get spermTable and spermTable_blebbed to get the data for use in classication algorithm.  
 The [makeTable.m](makeTable.m) file in particular can be changed such that the response is either fresh/frozen or fresh/frozen/blebbed.
 
 The models are stored [here](/classfication_learner_sessions/)
 
 All models were trained using the MATLAB [Classification Learner App](https://uk.mathworks.com/help/stats/classificationlearner-app.html).
 
-We first trained a simpler model using only the first three most important predictors, beat period, flagellum length and $\beta$. We trained a coarse tree to try and get an idea of how the different predictors correlated with the classification. The model indeed uses beat period as the most important classifier in both cases, and we see that it performs poorly when classifying blebbed samples, having a 0 true positive rate. 
+We first trained a simpler model using only the first three most important predictors, beat period, flagellum length and $\beta$. We trained a coarse tree to try and get an idea of how the different predictors correlated with the classification. The model uses beat period as the most important classifier in both cases, and we see that it performs poorly when classifying blebbed samples, having a 0 true positive rate. 
 
 | Decision Tree | Confusion Matrix |
 |---|---|
@@ -94,3 +94,11 @@ Given the time constraint we were not able to fully explore the data in its enti
 ---
 ## Team
 ---
+
+| Name  | GitHub |
+| ------------- | ------------- |
+| Harry Chen  | [chen-Harry](https://github.com/chen-Harry)  |
+| Ashwin Tennant  | [Ashwin344](https://github.com/Ashwin344)  |
+| Owen Gittins  |   |
+| Kaustubh Bhatnagar  |   |
+
