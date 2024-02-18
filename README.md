@@ -99,6 +99,6 @@ Given the time constraint we were not able to fully explore the data in its enti
 | ------------- | ------------- |
 | Harry Chen  | [chen-Harry](https://github.com/chen-Harry)  |
 | Ashwin Tennant  | [Ashwin344](https://github.com/Ashwin344)  |
-| Owen Gittins  |   |
-| Kaustubh Bhatnagar  |   |
+| Owen Gittins  | [OwenGithubins](https://github.com/OwenGithubins)  |
+| Kaustubh Bhatnagar  | [KB0-0](https://github.com/KB0-0)  |
 
