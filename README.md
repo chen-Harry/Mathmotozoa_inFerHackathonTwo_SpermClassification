@@ -36,6 +36,12 @@ Requires the "pop_pca.m" and "all_data.mat" files in directory, which can be fou
 Run linearAlphaBeta.m, makeMDC.m, makeTable.m and makeSpermTable.m in that order to get the spermTable.  
 The [makeTable.m](makeTable.m) file in particular can be changed such that the response is either fresh/frozen or fresh/frozen/blebbed.  
 
+All models were trained using the MATLAB [Classification Learner App](https://uk.mathworks.com/help/stats/classificationlearner-app.html).
+
+We attempted an ensemble approach using decision trees. First we compared the Out-of-bag error rates of a random forest model as we increased the number of trees, looking at the performance of the model which tries to classify fresh/frozen and the model which tries fresh/frozen/blebbed.
+
+![Out-of-bag error of trees](./figs/bagTreeOOBErrorGraph.png)
+
 ---
 ## Discussion
 
