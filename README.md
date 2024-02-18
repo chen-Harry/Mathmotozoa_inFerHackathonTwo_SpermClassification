@@ -40,7 +40,9 @@ All models were trained using the MATLAB [Classification Learner App](https://uk
 
 We attempted an ensemble approach using decision trees. First we compared the Out-of-bag error rates of a random forest model as we increased the number of trees, looking at the performance of the model which tries to classify fresh/frozen and the model which tries fresh/frozen/blebbed.
 
-![Out-of-bag error of trees](./figs/bagTreeOOBErrorGraph.png)
+<p align="center">
+<img  src=https://github.com/chen-Harry/Hackathon_2024/blob/master/figs/bagTreeOOBErrorGraph.png?raw=true alt="Out-of-bag error" class = "center" width="400" height = "400"/>
+ </p>
 
 ---
 ## Discussion
