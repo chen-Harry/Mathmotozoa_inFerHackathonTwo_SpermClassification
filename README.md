@@ -58,8 +58,5 @@ From the initial exploratory process, we found that most algorithms had trouble 
 ## Discussion
 
 ---
-## Discussion
-
----
 ## Team
 ---
