@@ -32,7 +32,7 @@ The maximal distal curvature (MDC) was found as defined in the paper. The data p
 ---
 ## Model
 
-Requires the "pop_pca.m" and "all_data.mat" files in directory, which can be found in [the data files here](https://ora.ox.ac.uk/objects/uuid:45ec598b-a674-4738-bd00-e1b761f49411)  
+Requires the "pop_pca.m" and "all_data.mat" files to be in the same directory, which can be found in [the data files here](https://ora.ox.ac.uk/objects/uuid:45ec598b-a674-4738-bd00-e1b761f49411)  
 Run linearAlphaBeta.m, makeMDC.m, makeTable.m and makeSpermTable.m in that order to get the spermTable.  
 The [makeTable.m](makeTable.m) file in particular can be changed such that the response is either fresh/frozen or fresh/frozen/blebbed.  
 
