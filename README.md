@@ -64,8 +64,8 @@ From the initial exploratory process, we found that most algorithms had trouble 
 We can see that in the fresh/frozen case the bagged tree and the RUSBoosted tree performed similarly, while in the fresh/frozen/blebbed case the two performed differently, with the RUSBoosted tree having higher accuracy in determining whether a sample was blebbed or not. Further research could include changing the misclassification cost associated with misclassifying the blebbed samples, and compare the balanced accuracy of the model normalised with respect to the size of each class.
 
 <p float="left">
-  <img src="/figs/ComparisonOfAccuracyOfRUSBoostedAndBaggedTreesForFreshFrozen.png" width="200" />
-  <img src="/figs/ComparisonOfAccuracyOfRUSBoostedAndBaggedTreesForFreshFrozenBlebbed.png" width="200" /> 
+  <img src="/figs/ComparisonOfAccuracyOfRUSBoostedAndBaggedTreesForFreshFrozen.png" width="400" />
+  <img src="/figs/ComparisonOfAccuracyOfRUSBoostedAndBaggedTreesForFreshFrozenBlebbed.png" width="400" /> 
 </p>
 
 
