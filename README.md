@@ -46,9 +46,13 @@ The models are stored in TODO
 
 All models were trained using the MATLAB [Classification Learner App](https://uk.mathworks.com/help/stats/classificationlearner-app.html).
 
-We first trained a simpler model using only the first three most important predictors, beat period, flagellum length and $\beta$. 
+We first trained a simpler model using only the first three most important predictors, beat period, flagellum length and $\beta$. We trained a coarse tree to try and get an idea of how the different predictors correlated with the classification.
 
-We attempted an ensemble approach using decision trees. First we compared the Out-of-bag error rates of a random forest model as we increased the number of trees, looking at the performance of the model which tries to classify fresh/frozen and the model which tries fresh/frozen/blebbed. We take $n=50$ to be the number of trees by which the ensemble classifier has converged.
+<p align="center">
+<img  src=/figs/ThreePredictorClassificationTree.png?raw=true alt="decision tree" class = "center" width="700" height = "450"/>
+ </p>
+
+We then attempted an ensemble approach using decision trees looking at all the predictors. First we compared the Out-of-bag error rates of a random forest model as we increased the number of trees, looking at the performance of the model which tries to classify fresh/frozen and the model which tries fresh/frozen/blebbed. We take $n=50$ to be the number of trees by which the ensemble classifier has converged.
 
 <p align="center">
 <img  src=https://github.com/chen-Harry/Hackathon_2024/blob/main/figs/bagTreeOOBErrorGraph.png?raw=true alt="Out-of-bag error" class = "center" width="600" height = "450"/>
@@ -74,7 +78,9 @@ We can see that in the fresh/frozen case the bagged tree and the RUSBoosted tree
 ---
 ## Discussion
 
+Depending on the usage for this classification, there are cases to be made on whether a bagged approach vs RUSBoosted approach is more appropriate. If we require the sample to have a low blebb count then an algorithm which has a higher true positive rate for blebbed could be preferable to one with a higher total accuracy. We also note that the top three predictors flagellum length, beat period and $\beta$ were poor predictors for blebbed, suggesting that $\alpha$ and MDC are important to determining whether a sample is blebbed or not.
 
+Given the time constraint we were not able to fully explore the data in its entirety, but this could be a good basis for further exploration of classification methods for spermatozoa beat patterns. In particular, we believe a more nuanced dimensionality reduction technique may be required to analyse the Cartesian beat pattern data over time, as $\alpha$ and $\beta$ appear to be poor predictors despite being derived from the whole Cartesian beat pattern dataset. 
 
 ---
 ## Team
