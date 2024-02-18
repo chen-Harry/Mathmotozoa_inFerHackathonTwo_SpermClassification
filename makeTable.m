@@ -10,12 +10,21 @@ for i=1:216
 
     if sperm.fresh
         Type(i) = "fresh";
+        Type_blebbed(i) = "fresh";
     else 
-        %if sperm.blebbed
-        %    Type(i) = "blebbed";
-        %else
-            Type(i) = "frozen";
-        %end
+        Type(i) = "frozen";
+        if sperm.blebbed
+            Type_blebbed(i) = "blebbed";
+        else
+            Type_blebbed(i) = "frozen";
+        end
     end
 end
 
+if size(Type,1) == 1
+    Type = Type.';
+end
+
+if size(Type_blebbed,1) == 1
+    Type_blebbed = Type_blebbed.';
+end
