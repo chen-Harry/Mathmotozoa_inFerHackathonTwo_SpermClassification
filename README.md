@@ -65,7 +65,7 @@ We can see that in the fresh/frozen case the bagged tree and the RUSBoosted tree
 
 <p float="left">
   <img src="/figs/ComparisonOfAccuracyOfRUSBoostedAndBaggedTreesForFreshFrozen.png" width="400" />
-  <img src="/figs/ComparisonOfAccuracyOfRUSBoostedAndBaggedTreesForFreshFrozenBlebbed.png" width="600" /> 
+  <img src="/figs/ComparisonOfAccuracyOfRUSBoostedAndBaggedTreesForFreshFrozenBlebbed.png" width="400" /> 
 </p>
 
 
@@ -73,6 +73,8 @@ We can see that in the fresh/frozen case the bagged tree and the RUSBoosted tree
 
 ---
 ## Discussion
+
+
 
 ---
 ## Team
