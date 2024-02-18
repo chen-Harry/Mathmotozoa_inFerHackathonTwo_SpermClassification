@@ -33,7 +33,7 @@ Using a chi-squared feature ranking algorithm, we see that beat period is by far
 
 | fresh/frozen                                                    | fresh/frozen/blebbed                                                  |
 |:---------------------------------------------------------------:| :--------------------------------------------------------------------:|
-| ![fresh_frozen accuracy](./figs/FreshVSFrozenClassification.png)| ![blebbed_fresh_frozen_accuracy](./figs/FreshVSFrozenVSBlebbedClassification.png) |
+| ![fresh_frozen accuracy](./figs/FreshVsFrozenClassification.png)| ![blebbed_fresh_frozen_accuracy](./figs/FreshVsFrozenVsBlebbedClassification.png) |
 
 ---
 ## Model
